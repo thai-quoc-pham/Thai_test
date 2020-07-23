@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<script src="https://kit.fontawesome.com/yourcode.js"></script>
+<title>MyContact</title>
+</head>
+<body>
+
+	<th:block th:unless="${#lists.isEmpty(contacts)}">
+		<div class="table-responsive">
+			<h5>List of contacts</h5>
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+
+						<th>Name</th>
+
+						<th>PhoneNumber</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="contact,iterStat : ${contacts}">
+
+						<td th:text="${contact.name}"></td>
+
+						<td th:text="${contact.phonenumber}"></td>
+						<td><a href="#"
+							th:href="@{/contact/{name}/edit(name=${contact.name})}"
+							class="mr-sm-2 text-primary"> <i class="fa fa-pencil"></i></a>
+							 <a
+							href="#" th:href="@{/contact/{name}/delete(name=${contact.name})}"
+							class="text-danger"> <i class="fa fa-trash"></i>
+						</a></td>
+					</tr>
+				</tbody>
+			</table>
+			<a href="#" th:href="@{/contact/add}"
+				class="btn btn-success float-right"> <i
+				class="fa fa-plus-square"></i> New contact
+			</a>
+		</div>
+	</th:block>
+
+</body>
+</html>
