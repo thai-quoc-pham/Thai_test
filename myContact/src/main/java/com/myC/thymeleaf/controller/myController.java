@@ -33,7 +33,7 @@ public class myController {
     public String save(contact contact) {
         
         contactService.save(contact);
-        return "index";
+        return "contact";
     }
     
     @GetMapping("/contact/{name}/edit")
