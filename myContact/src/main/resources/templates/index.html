@@ -24,7 +24,7 @@
 			<table class="table table-bordered table-hover">
 				<thead>
 					<tr>
-
+						<th>ID</th>
 						<th>Name</th>
 						<th>PhoneNumber</th>
 						<th>Action</th>
@@ -32,15 +32,16 @@
 				</thead>
 				<tbody>
 					<tr th:each="contact,iterStat : ${contacts}">
+						<td th:text="${contact.id}"></td>
 						<td th:text="${contact.name}"></td>
 						<td th:text="${contact.phonenumber}"></td>
 						<td>
 							<a href="#"
-							th:href="@{/contact/{name}/edit(name=${contact.name})}"
-							class="mr-sm-2 text-primary"> <i class="fa fa-pencil-square"></i></a>
+							th:href="@{/contact/{id}/edit(id=${contact.id})}"
+							class="btn btn-primary">Edit</a>
 							<a
-							href="#" th:href="@{/contact/{name}/delete(name=${contact.name})}"
-							class="text-danger"> <i class="	fa fa-trash"></i>
+							href="#" th:href="@{/contact/{id}/delete(id=${contact.id})}"
+							class="btn btn-danger">Delete
 						</a>
 					</td>
 					</tr>

@@ -1,11 +1,13 @@
 package com.myC.thymeleaf.repository;
 
-import java.util.List;
 
-import org.springframework.data.repository.CrudRepository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.myC.thymeleaf.entity.contact;
 
-public interface myRepository extends CrudRepository<contact, String>{
-	List<contact> findByNameContaining(String term);
+@Repository
+public interface myRepository extends JpaRepository<contact, Integer>{
+
 }

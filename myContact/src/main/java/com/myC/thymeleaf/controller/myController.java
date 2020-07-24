@@ -6,16 +6,18 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 
 import com.myC.thymeleaf.entity.contact;
-import com.myC.thymeleaf.service.myService;
+import com.myC.thymeleaf.service.myCService;
+
 
 @Controller
 public class myController {
 
 	@Autowired
-    private myService contactService;
+    private myCService contactService;
 
     @GetMapping("/contact")
     public String list(Model model) {
@@ -30,21 +32,22 @@ public class myController {
     }
     
     @PostMapping("/contact/save")
-    public String save(contact contact) {
-        
-        contactService.save(contact);
-        return "contact";
+    public String save(contact contact, Model model) {
+    	contactService.save(contact);
+    	model.addAttribute("contacts", contactService.findAll());      
+        return "index";
     }
     
-    @GetMapping("/contact/{name}/edit")
-    public String edit(@PathVariable("name") contact name, Model model) {
-        model.addAttribute("contact", contactService.findById(name));
+    @GetMapping("/contact/{id}/edit")
+    public String edit(@PathVariable("id") Integer id, Model model) {
+        model.addAttribute("contact", contactService.findById(id) );
         return "addContact";
     }
     
-    @GetMapping("/contact/{name}/delete")
-    public String delete(@PathVariable("name") contact name) {
-        contactService.delete(name);
-        return "contact";
+    @RequestMapping("/contact/{id}/delete")
+    public String delete(@PathVariable("id") Integer id, Model model) {
+        contactService.delete(id);
+        model.addAttribute("contacts", contactService.findAll());
+        return "index";
     }
 }
