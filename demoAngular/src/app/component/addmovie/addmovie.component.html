@@ -1,0 +1,20 @@
+<h3>Add Movie</h3>
+<br>
+<form (ngSubmit)="onSubmit()">
+  <label for="ID">ID</label><br>
+  <input type="number" id="ID" name="ID" (ngModel)="movie.id"><br>
+  <label for="Moviename">Movie name</label><br>
+  <input type="text" id="Moviename" name="Moviename" (ngModel)="movie.movieName"><br>
+  <label for="Description">Description</label><br>
+  <input type="text" id="Description" name="Description" (ngModel)="movie.description"><br>
+  <label for="Duration">Duration</label><br>
+  <input type="number" id="Duration" name="Duration" (ngModel)="movie.duration"><br>
+  <label for="Namealias">Name alias</label><br>
+  <input type="text" id="Namealias" name="Namealias" (ngModel)="movie.nameAlias"><br>
+  <label for="Status">Status</label><br>
+  <input type="text" id="Status" name="Status" (ngModel)="movie.status"><br> ><br>
+  <label for="Thumburl">Thumb URL</label><br>
+  <input type="text" id="Thumburl" name="Thumburl" (ngModel)="movie.thumbUrl">
+  <br><br>
+  <button>Save</button>
+</form>

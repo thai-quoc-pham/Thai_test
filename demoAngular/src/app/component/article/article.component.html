@@ -1,0 +1,28 @@
+
+<table class="article">
+  <tr>
+    <th>ID</th>
+    <th>Movie name</th>
+    <th>Description</th>
+    <th>Duration</th>
+    <th>Name alias</th>
+    <th>Status</th>
+    <th>Thumbnail</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let movie of movies | async">
+    <td>{{movie.id}}</td>
+    <td>{{movie.movieName}}</td>
+    <td>{{movie.description}}</td>
+    <td>{{movie.duration}}</td>
+    <td>{{movie.nameAlias}}</td>
+    <td>{{movie.status}}</td>
+    <td>{{movie.thumbUrl}}</td>
+    <td>
+      <button class="btn" (click)="deleteMovie(movie.id)">Delete</button>
+      <button class="btn" (click)="deleteMovie(movie.id)">Edit</button>
+    </td>
+  </tr>
+</table>
+<br><br>
+
